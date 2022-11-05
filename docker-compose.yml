@@ -1,0 +1,30 @@
+version: '3'
+# Define services
+services:
+  # App Services
+  api1:
+    # Configuration for building the docker image for the service
+    build:
+      context: . # Use an image built from the specified dockerfile in the current directory.
+      dockerfile: Dockerfile
+    environment:
+      - GIN_MODE=debug
+      - CONSUL_HTTP_ADDR=consul:8500
+      - REDIS_URL=redis:6379
+      - CACHE_SERVICE_NAME=cache-api
+    ports:
+      - "8080:8080" # Forward the exposed port 8080 on the container to port 8080 on the host machine
+    restart: unless-stopped
+    depends_on:
+      - redis
+      - consul
+  redis:
+    image: redis:6.2.1-alpine3.13
+    ports:
+      - '6379:6379'
+  consul:
+    image: hashicorp/consul:1.13
+    ports:
+      - "8500:8500"
+      - "8600:8600/tcp"
+      - "8600:8600/udp"
