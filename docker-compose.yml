@@ -2,7 +2,7 @@ version: '3'
 # Define services
 services:
   # App Services
-  api1:
+  cache-api:
     # Configuration for building the docker image for the service
     build:
       context: . # Use an image built from the specified dockerfile in the current directory.

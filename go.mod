@@ -1,4 +1,4 @@
-module github.com/mecitsemerci/consul-demo
+module github.com/mecitsemerci/consul-demo/goserver
 
 go 1.19
 

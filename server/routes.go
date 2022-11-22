@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-func (s *Server) registerRoutes() {
+func (s *Server) RegisterRoutes() {
 	s.Engine = gin.Default()
 	s.Engine.GET("", func(c *gin.Context) {
 		fmt.Printf("ClientIP: %s\n", c.ClientIP())

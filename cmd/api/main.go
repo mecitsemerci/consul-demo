@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/mecitsemerci/consul-demo/server"
+	"github.com/mecitsemerci/consul-demo/goserver/server"
 	"log"
 )
 

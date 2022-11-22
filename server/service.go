@@ -1,12 +1,12 @@
 package server
 
 import (
-	"github.com/mecitsemerci/consul-demo/service"
+	"github.com/mecitsemerci/consul-demo/goserver/service"
 	"log"
 	"os"
 )
 
-func (s *Server) registerService() {
+func (s *Server) RegisterCacheService() {
 	rURL := os.Getenv("REDIS_URL")
 	log.Print("Redis URL:" + rURL)
 	if rURL == "" {

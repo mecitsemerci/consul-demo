@@ -3,7 +3,7 @@ package server
 import (
 	"github.com/gin-gonic/gin"
 	consul "github.com/hashicorp/consul/api"
-	"github.com/mecitsemerci/consul-demo/service"
+	"github.com/mecitsemerci/consul-demo/goserver/service"
 	"time"
 )
 
@@ -21,9 +21,9 @@ func New() Server {
 		TTL:  10 * time.Second,
 	}
 
-	s.registerService()
-	s.registerRoutes()
-	s.registerConsul()
+	s.RegisterCacheService()
+	s.RegisterRoutes()
+	s.ConsulServiceRegister()
 
 	go s.UpdateTTL(s.Service.Check)
 

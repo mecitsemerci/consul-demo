@@ -1,12 +1,13 @@
 package server
 
 import (
+	"errors"
 	consul "github.com/hashicorp/consul/api"
 	"log"
 	"time"
 )
 
-func (s *Server) registerConsul() {
+func (s *Server) ConsulServiceRegister() {
 	c, err := consul.NewClient(consul.DefaultConfig())
 	if err != nil {
 		log.Fatalln("Consul client error ", err.Error())
@@ -49,4 +50,11 @@ func (s *Server) update(check func() (bool, error)) {
 			log.Print(agentErr)
 		}
 	}
+}
+
+func (s *Server) ConsulServiceDeregister() error {
+	if s.ConsulAgent == nil {
+		return errors.New("consul agent is empty")
+	}
+	return s.ConsulAgent.ServiceDeregister(s.Name)
 }
