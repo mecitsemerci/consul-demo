@@ -27,3 +27,7 @@ Test
 Cache-API deploy
 
     kubectl apply -f go-cache-api.yaml  
+
+
+### References
+https://developer.hashicorp.com/consul/tutorials/kubernetes/kubernetes-minikube
